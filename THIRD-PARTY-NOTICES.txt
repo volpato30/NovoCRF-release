@@ -1,0 +1,99 @@
+NovoCRF - Third-Party Notices
+=============================
+
+NovoCRF includes the third-party components listed in part A, and its built-in model was trained on the public
+datasets listed in part B. The Thermo RawFileReader and Bruker TDF SDK reader libraries are NOT included in this
+release; they are downloaded by the user and used under the vendor's own licence.
+
+
+A. Components included in the programs
+======================================
+
+1. SQLite
+---------
+Public domain. See https://www.sqlite.org/copyright.html
+"The author disclaims copyright to this source code. In place of a legal notice, here is a blessing:
+ May you do good and not evil. May you find forgiveness for yourself and forgive others. May you share freely,
+ never taking more than you give."
+
+
+2. NVIDIA CUDA Runtime (statically linked into novocrf, Windows and Linux)
+--------------------------------------------------------------------------
+Copyright (c) NVIDIA Corporation. All rights reserved. The CUDA Runtime library (cudart_static, CUDA Toolkit 12.8)
+is linked into the program and redistributed under the NVIDIA CUDA Toolkit End User License Agreement,
+https://docs.nvidia.com/cuda/eula/index.html. It needs the NVIDIA display driver, which is not included.
+
+
+3. Microsoft Visual C++ runtime and OpenMP runtime (Windows)
+------------------------------------------------------------
+novocrf.exe is built with Microsoft Visual C++: the C/C++ runtime is linked into it, and the OpenMP runtime
+vcomp140.dll ships next to it unmodified. Both are Microsoft Visual Studio Distributable Code, redistributed under
+the Microsoft Visual Studio license terms (https://visualstudio.microsoft.com/license-terms/). Copyright (c)
+Microsoft Corporation.
+
+
+4. Microsoft .NET runtime and libraries
+---------------------------------------
+The .NET runtime, built into DotnetBridge (Windows and Linux). Its own third-party notices are at
+https://github.com/dotnet/runtime/blob/main/THIRD-PARTY-NOTICES.TXT
+Copyright (c) .NET Foundation and Contributors. Licensed under the MIT License:
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+  documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+  the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+  to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all copies or substantial portions of
+  the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+  THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+  CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+
+
+5. OpenMcdf (built into DotnetBridge)
+-------------------------------------
+Copyright (c) 2010-2026, Federico Blaseotto, Jeremy Powell. Licensed under the Mozilla Public License 2.0
+(https://mozilla.org/MPL/2.0/). Included unmodified; its source code is available at
+https://github.com/openmcdf/openmcdf
+
+
+6. GCC runtime libraries (statically linked, Linux)
+---------------------------------------------------
+Portions of the GCC runtime (libstdc++, libgcc, libgomp) are linked into the Linux executable. These are
+distributed under the GNU General Public License version 3, with the GCC Runtime Library Exception, which permits
+their inclusion in software under other licences. See https://www.gnu.org/licenses/gcc-exception-3.1.html
+
+
+B. Datasets the built-in model was trained on
+=============================================
+
+The datasets below are not included in this release. NovoCRF's built-in model (its weights) was trained on data
+that include them.
+
+7. PROSPECT PTMs (fragment ion intensities and retention times)
+---------------------------------------------------------------
+Wilhelmlab, Technical University of Munich, School of Life Sciences. Licensed under the Creative Commons
+Attribution 4.0 International licence (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/).
+  - PROSPECT PTMs - Fragment Ion Intensity Prediction (MS2):
+    https://huggingface.co/datasets/Wilhelmlab/prospect-ptms-ms2 (doi:10.57967/hf/3379)
+  - PROSPECT PTMs - Retention Time Prediction: https://huggingface.co/datasets/Wilhelmlab/prospect-ptms-irt
+Used to train the model's fragment-intensity predictor (HCD spectra, together with NovoCRF's own training spectra)
+and its retention-time (iRT) predictor. The data were converted to NovoCRF's training format; the model's weights
+are derived from them. Sources and references:
+  - Shouman O, Gabriel W, Giurcoiu V-G, Sternlicht V, Wilhelm M. PROSPECT: Labeled tandem mass spectrometry
+    dataset for machine learning in proteomics. Advances in Neural Information Processing Systems 35 (2022).
+  - Gabriel W, Shouman O, Wilhelm M. PROSPECT PTMs datasets (Multi-PTM, TMT, TMT-PTM, Test-PTM), Zenodo
+    (doi:10.5281/zenodo.11472525, 10.5281/zenodo.8221499, 10.5281/zenodo.11474099, 10.5281/zenodo.11477731).
+  - Based on the ProteomeTools data (Zolg DP et al., Nature Methods 14:259-262, 2017; Zolg DP et al., Molecular &
+    Cellular Proteomics 17:1850-1863, 2018).
+
+
+8. InstaNovo dataset (InstaNovo-FM training corpus)
+---------------------------------------------------
+InstaDeep. https://huggingface.co/datasets/InstaDeepAI/InstaNovo, https://huggingface.co/datasets/InstaDeepAI/CompOmics_PRIDE, https://huggingface.co/datasets/InstaDeepAI/ms_proteometools
+The spectra derive from public submissions to PRIDE (https://www.ebi.ac.uk/pride/); their use is governed by the
+EMBL-EBI Terms of Use, https://www.ebi.ac.uk/about/terms-of-use/. Spectra and peptide-spectrum matches from this
+corpus are part of the model's training data; the model's weights are derived from them.

@@ -1,0 +1,4 @@
+# Local vendor reader libraries placed here for your own testing - never commit them.
+# (Downloaded from the vendor and used under the vendor's own licence.)
+/vendor_reader/*
+!/vendor_reader/README.txt
